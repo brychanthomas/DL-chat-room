@@ -5,7 +5,7 @@ import time
 
 class DB():
     def __init__(self, filename): #connects to database
-        self.conn = sqlite3.connect('messages.db')
+        self.conn = sqlite3.connect(filename)
 
     def add_message(self, user, message): #adds a message to the database
         self.conn.executescript("""INSERT INTO messages (username, messageText, time)

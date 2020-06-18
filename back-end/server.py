@@ -10,7 +10,7 @@ serverPort = 8080
 
 messagesDB = database.DB('data/messages.db')
 
-with open("index.html", 'r') as indexFile:
+with open("../front-end/index.html", 'r') as indexFile:
     webpage = indexFile.read()
 
 

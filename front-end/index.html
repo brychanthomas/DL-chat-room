@@ -35,8 +35,11 @@ update();
 </script>
 <style>
   #messages-div {
-    height: 90%;
+    height:90%;
     overflow-y: scroll;
+  }
+  p {
+	font-size:20px;
   }
 </style>
 </head>
@@ -46,7 +49,7 @@ update();
 </div>
 
 <form method ="POST" enctype="multipart/form-data" action="/new-message/" target="hiddenFrame">
-<input name="message" type="text" placeholder="Add new post">
+<input name="message" type="text" placeholder="Message" style="width:60%;">
 <input name="username" type="hidden" id="userInput">
 <input type="submit" value="Add">
 </form>

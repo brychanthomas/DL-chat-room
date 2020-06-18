@@ -11,7 +11,9 @@ function update() {
     success: function (data, status, xhr) {
       if (xhr.status == 200) {
         console.log('Successful update');
+        var messageDiv = document.getElementById("messages-div");
         document.getElementById("messages-div").innerHTML = data;
+        messageDiv.scrollTop = messageDiv.scrollHeight;
       }
       setTimeout(update, 2000);
     }
@@ -31,6 +33,12 @@ function setUsername() {
 update();
 
 </script>
+<style>
+  #messages-div {
+    height:80%;
+    overflow:scroll;
+  }
+</style>
 </head>
 <body onload="setUsername();">
 

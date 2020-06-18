@@ -8,7 +8,7 @@ function update() {
         console.log('Successful update');
         document.getElementById("messages-div").innerHTML = data;
       }
-      setTimeout(update(), 2000);
+      setTimeout(update, 2000);
     }
   });
 }

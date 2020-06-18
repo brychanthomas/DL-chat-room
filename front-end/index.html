@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>DL chat</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+function update() {
+  $.ajax({
+    method: "GET",
+    url: "/get-messages",
+    cache: false,
+    success: function (data, status, xhr) {
+      if (xhr.status == 200) {
+        console.log('Successful update');
+        document.getElementById("messages-div").innerHTML = data;
+      }
+      setTimeout(update, 2000);
+    }
+  });
+}
+
+function setUsername() {
+    if(localStorage.username) {
+        document.getElementById("userInput").value = localStorage.username;
+    } else {
+        var username = prompt('Please enter a username before you can use the chat room.');
+        localStorage.username = username;
+        document.getElementById("userInput").value = localStorage.username;
+    }
+};
+
+update();
+
+</script>
+</head>
+<body onload="setUsername();">
+
+<div id="messages-div">
+</div>
+
+<form method ="POST" enctype="multipart/form-data" action="/new-message/" target="hiddenFrame">
+<input name="message" type="text" placeholder="Add new post">
+<input name="username" type="hidden" id="userInput">
+<input type="submit" value="Add">
+</form>
+
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+
+</body>
+</html>

@@ -8,9 +8,3 @@ def conversion (tup1e):
         string+=("\n<p>"+name+" at "+time+"</p>"+"\n<p>"+msg+"</p>"+"\n<br>")
     return string
 
-#Tuple Input
-inputA=[("B******", "Peng ting", "20/04/69"), ("H***", "peng ting", "20/04/69"), ("H***", "peng ting", "20/04/69"), ("H***", "peng ting", "20/04/69"), ("H***", "peng ting", "20/04/69")]
-
-#Conversion Output
-print(conversion(inputA))
-

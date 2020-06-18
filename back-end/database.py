@@ -28,6 +28,7 @@ ORDER BY time ASC""")
 
 
 
+##a = DB('data/messages.db')
 ##a.execute_command("""CREATE TABLE messages (
 ##ID INTEGER PRIMARY KEY AUTOINCREMENT,
 ##username TEXT,

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<script src="https://kit.fontawesome.com/d2537b8c09.js" crossorigin="anonymous"></script>
+
+
+<title>ChatHub</title>
+<link rel='shortcut icon' href='https://lh3.googleusercontent.com/ZpQX7cZY8v3iHtvprI5bbv13TxVieD6bULRMUjQ6D4IZYMxyBd-gA76sFXBfHuohxRI=s180-rw' type='image/x-icon' />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#log {
+  overflow: scroll;
+  width: 100%;
+  height: 80%;
+  border: 2px solid black;
+  border-color: #ffa31a;
+}
+
+#send {
+  width: 8%;
+  background-color: #ffa31a;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#message, select {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+* {box-sizing: border-box}
+
+/* Style the tab */
+.tab {
+  overflow: scroll;
+  float: left;
+  background-color: #303030;
+  width: 15%;
+  height: 100%;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  display: block;
+  background-color:inherit;
+  color: black;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ffa31a;
+}
+
+/* Style the tab content */
+.chattabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 85%;
+  border-left: none;
+  height: 100%;
+}
+
+/* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #292929;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 10%;
+  height: 60px;
+}
+
+.tablink:hover {
+  background-color: #404040;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 2%;
+  height: 100%;
+}
+
+#Chats {background-color: #101010;}
+#User {background-color: #101010;}
+#Hub{background-color: #101010;}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #292929;
+}
+
+
+
+.topnav .search-container {
+  float: left;
+  height: 48px; 
+  margin-left: 10px;
+}
+
+.topnav input[type=text] {
+  padding: 8px;
+  margin-top: 13px;
+  font-size: 17px;
+  border: 1px solid black;
+  background-color: #ffa31a
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 8px 10px;
+  margin-top: 14px;
+  margin-right: 16px;
+  background: #gray;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<button class="tablink" onclick="openPage('User', this, '#ffa31a')"><i class="far fa-user-circle">User</i></button>
+<button class="tablink" onclick="openPage('Chats', this, '#ffa31a')" id="defaultOpen"><i class="far fa-comments">Chats</i></button>
+<button class="tablink" onclick="openPage('Hub', this, '#ffa31a')"><i class="fas fa-globe">Hub</i></button>
+<div class="topnav">
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search for people" name="search" autocomplete="off">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <img src="https://lh3.googleusercontent.com/ZpQX7cZY8v3iHtvprI5bbv13TxVieD6bULRMUjQ6D4IZYMxyBd-gA76sFXBfHuohxRI=s180-rw" style="width=60px;height:60px;float:right;margin-right: 5px">
+ </div>
+
+<div id="User" class="tabcontent">
+  <h3>User Page</h3>
+  <p>Everything about the user e.g details, personal page, settings etc</p>
+</div>
+
+<div id="Chats" class="tabcontent">
+  <div class="tab">
+  <button class="chattablinks" onclick="openChat(event, 'Friend 1')" id="defaultOpen2"><img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><p style="display:inline-block; padding:4px">Friend 1</p></button>
+  <button class="chattablinks" onclick="openChat(event, 'Friend 2')"><img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><p style="display:inline-block; padding:4px">Friend 2</p></button>
+  <button class="chattablinks" onclick="openChat(event, 'Friend 3')"><img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><p style="display:inline-block; padding:4px">Friend 3</p></button>
+  </div>
+  
+  <div id="Friend 1" class="chattabcontent">
+  <img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><h3 style="display:inline-block">Friend 1</h3>
+  <div id="log">
+  </div>
+  <form action="/action_page.php">
+    <input type="text" id="message" name="message" placeholder="Enter message" style="color: white" autocomplete="off">
+	<button type="submit" id="send">Send</button>
+  </form>
+  </div>
+
+  <div id="Friend 2" class="chattabcontent">
+  <img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><h3 style="display:inline-block">Friend 2</h3>
+  <div id="log">
+  </div>
+  <form action="/action_page.php">
+    <input type="text" id="message" name="message" placeholder="Enter message" style="color: white" autocomplete="off">
+	<button type="submit" id="send">Send</button>
+  </form>
+  </div>
+
+  <div id="Friend 3" class="chattabcontent">
+  <img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><h3 style="display:inline-block">Friend 3</h3>
+  <div id="log">
+  </div>
+  <form action="/action_page.php">
+    <input type="text" id="message" name="message" placeholder="Enter message" style="color: white" autocomplete="off">
+    <button type="submit" id="send">Send</button>
+  </form>
+  </div>
+</div>
+
+<div id="Hub" class="tabcontent">
+  <h3>Hub</h3>
+  <p>Public feed. One can post images, videos, updates etc. onto the feed for all friends to see</p>
+</div>
+
+
+
+<script>
+function openPage(pageName, elmnt, color) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Remove the background color of all tablinks/buttons
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+
+  // Show the specific tab content
+  document.getElementById(pageName).style.display = "block";
+
+  // Add the specific color to the button used to open the tab content
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+function openChat(evt, friendName) {
+  // Declare all variables
+  var i, chattabcontent, chattablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  chattabcontent = document.getElementsByClassName("chattabcontent");
+  for (i = 0; i < chattabcontent.length; i++) {
+    chattabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  chattablinks = document.getElementsByClassName("chattablinks");
+  for (i = 0; i < chattablinks.length; i++) {
+    chattablinks[i].className = chattablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the link that opened the tab
+  document.getElementById(friendName).style.display = "block";
+  evt.currentTarget.className += " active";
+ } 
+  
+  document.getElementById("defaultOpen2").click();
+
+</script>
+</body>
+</html>

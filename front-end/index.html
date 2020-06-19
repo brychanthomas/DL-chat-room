@@ -209,12 +209,12 @@ setInterval(update, 1000);
 <button class="tablink" onclick="openPage('Hub', this, '#ffa31a')"><i class="fas fa-globe">Hub</i></button>
 <div class="topnav">
   <div class="search-container">
-    <form action="/action_page.php">
+    <form action="/search_doesnt_work_dumdum">
       <input type="text" placeholder="Search for people" name="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
-  <img src="chathub.png" style="width=60px;height:60px;float:right;margin-right: 5px">
+  <img src="https://lh3.googleusercontent.com/ZpQX7cZY8v3iHtvprI5bbv13TxVieD6bULRMUjQ6D4IZYMxyBd-gA76sFXBfHuohxRI=s180-rw" style="width=60px;height:60px;float:right;margin-right: 5px">
  </div>
 
 <div id="User" class="tabcontent">
@@ -224,16 +224,17 @@ setInterval(update, 1000);
 
 <div id="Chats" class="tabcontent">
   <div class="tab">
-  <button class="chattablinks" onclick="openChat(event, 'Friend 1')" id="defaultOpen2"><p style="display:inline-block; padding:4px">Chat room</p></button>
+  <button class="chattablinks" onclick="openChat(event, 'Friend 1')" id="defaultOpen2"><img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><p style="display:inline-block; padding:4px">Chat room</p></button>
   </div>
   
   <div id="Friend 1" class="chattabcontent">
+  <img src="https://pbs.twimg.com/profile_images/436116800/n504645018_345930_9124_400x400.jpg" alt="Avatar" class="avatar"><h3 style="display:inline-block">Friend 1</h3>
   <div id="messages-div">
   </div>
   <form method ="POST" enctype="multipart/form-data" action="/new-message/" target="hiddenFrame">
-    <input type="text" id="message" name="message" placeholder="Enter message" style="color: white">
-	<input name="username" type="hidden" id="userInput">
-	<input type="submit" id="send" value="Send">
+    <input type="text" id="message" name="message" placeholder="Enter message" style="color: white" autocomplete="off">
+    <input name="username" type="hidden" id="userInput">
+    <input type="submit" id="send" value="Send">
   </form>
   </div>
 

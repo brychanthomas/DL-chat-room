@@ -205,7 +205,8 @@ body, html {
   </div>
   <form method ="POST" enctype="multipart/form-data" action="/new-message/" target="hiddenFrame">
     <input type="text" id="message" name="message" placeholder="Enter message" style="color: white">
-	<input type="submit" id="send" value="Send">
+    <input name="username" type="hidden" id="userInput">
+    <input type="submit" id="send" value="Send">
   </form>
   </div>
 
